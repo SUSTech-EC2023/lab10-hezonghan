@@ -1,0 +1,67 @@
+
+% \documentclass[twocolumn]{ctexart}
+\documentclass[onecolumn]{ctexart}
+
+\usepackage{geometry}
+\geometry{a4paper,left=1cm,right=1cm,top=1.4cm,bottom=1cm}
+
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{xcolor}
+
+\usepackage{graphicx}  % for \resizebox
+
+\usepackage{arydshln}
+
+\title{GP Initialization: Grow Method}
+\author{何宗翰}
+
+\begin{document}
+
+\maketitle
+
+
+设 terminal percentage 为 $t \in [0,1]$，树有二叉。
+
+\begin{equation}
+    \begin{aligned}
+        P(D=d) = 
+        \begin{cases}
+            t,  d=1 \\
+            % P(D \leq d-1)\cdot P(D=d-1),  d>1 \\
+            (1-t) \cdot [(P(D = d-1))^2 + 2 \cdot P(D = d-1) \cdot P(D < d-1)],  d \geq 2 \\
+        \end{cases}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        P(N=n) = 
+        \begin{cases}
+            t,  n=1 \\
+            (1-t) \cdot \sum_{l=1}^{n-2} P(N=l) \cdot P(N=n-1-l),  d \geq 2 \\
+        \end{cases}
+    \end{aligned}
+\end{equation}
+
+则可求期望
+\begin{equation}
+    \begin{aligned}
+        E(D) = \sum_{d=1}^{\infty} d \cdot P(D=d) \\
+        E(N) = \sum_{n=1}^{\infty} n \cdot P(N=n) \\
+    \end{aligned}
+\end{equation}
+
+打表找规律，发现当 $t\geq 0.53$ 时， $E(N) \approx \frac{0.5}{t - 0.5}$。
+\begin{equation}
+    \begin{aligned}
+    \end{aligned}
+\end{equation}
+
+
+\begin{equation}
+    \begin{aligned}
+    \end{aligned}
+\end{equation}
+
+\end{document}
